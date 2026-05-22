@@ -175,6 +175,7 @@ const logoutUser = asyncHandler(async (req, res) => {
 });
 
 const refreshAccessToken = asyncHandler(async (req, res) => {
+
   const incomingRefreshToken =
     req.cookies.refreshToken || req.body.refreshToken;
 
@@ -210,7 +211,7 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
     res
       .status(200)
       .cookie("accessToken", accessToken, option)
-      .cookie("newRefreshToken", newRefreshToken, option)
+      .cookie("refreshToken", newRefreshToken, option)
       .json(
         APiResponse(
           200,
